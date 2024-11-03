@@ -2,26 +2,59 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Amalfi Coast Hiking Itinerary with Path of the Gods and Naples Airport</title>
+    <title>Amalfi Coast Hiking Itinerary with Enhanced Map Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         #map { height: 100vh; }
+        /* Legend styling */
+        .legend {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .legend .color-box {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 8px;
+        }
+        .legend .blue { background-color: blue; }
+        .legend .red { background-color: red; }
     </style>
 </head>
 <body>
     <div id="map"></div>
 
+    <!-- Legend -->
+    <div class="legend">
+        <div><span class="color-box blue"></span> Sorrento to Amalfi Route</div>
+        <div><span class="color-box red"></span> Path of the Gods Route</div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-providers@1.13.0/dist/leaflet-providers.min.js"></script>
     <script>
         // Initialize the map
         var map = L.map('map').setView([41.5, 13.5], 6); // Adjusted view to include Tuscany and Amalfi Coast
 
-        // Add a tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // Base tile layer (OpenStreetMap)
+        var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
+
+        // Terrain layer for elevation details
+        var terrainLayer = L.tileLayer.provider('Stamen.Terrain').addTo(map);
+
+        // Hiking trails and paths layer (OpenTopoMap with hiking trails)
+        var hikingLayer = L.tileLayer.provider('OpenTopoMap').addTo(map);
 
         // Define coordinates for the Sorrento to Amalfi route with all waypoints in order
         var sorrentoToAmalfiRoute = [
