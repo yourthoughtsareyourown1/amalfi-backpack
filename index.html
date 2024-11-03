@@ -23,7 +23,7 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Define coordinates for the Sorrento to Amalfi route with all waypoints
+        // Define coordinates for the Sorrento to Amalfi route with all waypoints in order
         var sorrentoToAmalfiRoute = [
             [40.6263, 14.3758],  // Sorrento
             [40.5989, 14.3541],  // Schiazzano
@@ -34,18 +34,18 @@
             [40.6342, 14.6027]   // Amalfi
         ];
 
-        // Define coordinates for the Path of the Gods route, starting from Sorrento and ending in Amalfi
+        // Define coordinates for the Path of the Gods route with all waypoints in order
         var pathOfTheGodsRoute = [
             [40.6263, 14.3758],  // Sorrento
             [40.6342, 14.5450],  // Bomerano (Path of the Gods start)
-            [40.6407, 14.5549],  // Viewpoint along the Path of the Gods
-            [40.6482, 14.5638],  // Midpoint
+            [40.6407, 14.5549],  // Viewpoint along Path of the Gods
+            [40.6482, 14.5638],  // Midpoint along Path of the Gods
             [40.6515, 14.5730],  // Nocelle
             [40.6295, 14.4824],  // Positano
             [40.6342, 14.6027]   // Amalfi
         ];
 
-        // Add markers for each waypoint along both routes
+        // Add markers for each waypoint along both routes in order
         var waypoints = [
             { name: "Sorrento Arrival", coords: [40.6263, 14.3758], description: "Explore Sorrento's historic center, lemon groves, and Marina Grande." },
             { name: "Schiazzano", coords: [40.5989, 14.3541], description: "Small village known for olive groves and mozzarella production." },
