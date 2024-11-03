@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Amalfi Coast Map with Hiking Trails Only</title>
+    <title>Amalfi Coast Hiking Map with Trail Information and Layer Control</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
     <style>
@@ -39,12 +39,13 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-providers@1.13.0/dist/leaflet-providers.min.js"></script>
     <script>
         // Initialize the map
         var map = L.map('map').setView([41.5, 13.5], 6); // Adjusted view to include Tuscany and Amalfi Coast
 
-        // Base tile layer (OpenStreetMap)
-        var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // Base tile layer (OpenStreetMap for street view)
+        var streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '&copy; OpenStreetMap contributors'
         });
@@ -55,19 +56,16 @@
             attribution: 'Waymarked Trails'
         });
 
-        // Add the base layer (OpenStreetMap)
-        osmLayer.addTo(map);
+        // Add the street layer as default
+        streetLayer.addTo(map);
 
-        // Add layer control with the hiking trails layer
+        // Add layer control with street view and hiking trails toggle
         var baseLayers = {
-            "OpenStreetMap": osmLayer
-        };
-
-        var overlayLayers = {
+            "Street View (OpenStreetMap)": streetLayer,
             "Hiking Trails": hikingTrailsLayer
         };
 
-        L.control.layers(baseLayers, overlayLayers).addTo(map);
+        L.control.layers(baseLayers).addTo(map);
 
         // Define coordinates for the Sorrento to Amalfi route with all waypoints in order
         var sorrentoToAmalfiRoute = [
