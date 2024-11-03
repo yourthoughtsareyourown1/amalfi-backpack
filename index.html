@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Amalfi Coast Hiking Itinerary with Tuscany</title>
+    <title>Amalfi Coast Hiking Itinerary with Path of the Gods</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
     <style>
@@ -37,11 +37,11 @@
         // Define coordinates for the Path of the Gods route with all waypoints in order
         var pathOfTheGodsRoute = [
             [40.6263, 14.3758],  // Sorrento
+            [40.6295, 14.4824],  // Positano
             [40.6342, 14.5450],  // Bomerano (Path of the Gods start)
             [40.6407, 14.5549],  // Viewpoint along Path of the Gods
             [40.6482, 14.5638],  // Midpoint along Path of the Gods
             [40.6515, 14.5730],  // Nocelle
-            [40.6295, 14.4824],  // Positano
             [40.6342, 14.6027]   // Amalfi
         ];
 
@@ -69,7 +69,7 @@
         // Draw the Sorrento to Amalfi route in blue
         L.polyline(sorrentoToAmalfiRoute, { color: 'blue', weight: 3, opacity: 0.7 }).addTo(map);
 
-        // Draw the Path of the Gods route in red, connecting from Sorrento to Amalfi
+        // Draw the Path of the Gods route in red, connecting from Sorrento to Amalfi via Positano and Bomerano
         L.polyline(pathOfTheGodsRoute, { color: 'red', weight: 3, opacity: 0.7 }).addTo(map);
     </script>
 </body>
