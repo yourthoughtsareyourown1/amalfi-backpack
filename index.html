@@ -23,7 +23,7 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Define coordinates for the Sorrento to Amalfi route
+        // Define coordinates for the Sorrento to Amalfi route with all waypoints
         var sorrentoToAmalfiRoute = [
             [40.6263, 14.3758],  // Sorrento
             [40.5989, 14.3541],  // Schiazzano
@@ -34,18 +34,18 @@
             [40.6342, 14.6027]   // Amalfi
         ];
 
-        // Define coordinates for the Path of the Gods route
+        // Define coordinates for the Path of the Gods route with all waypoints
         var pathOfTheGodsRoute = [
             [40.6342, 14.5450],  // Bomerano (start)
-            [40.6407, 14.5549],  // midpoint
+            [40.6407, 14.5549],  // midpoint with viewpoint
             [40.6482, 14.5638],  // midpoint
-            [40.6515, 14.5730],  // Nocelle (end)
-            [40.6295, 14.4824],  // Positano connection back to Sorrento
-            [40.6263, 14.3758]   // Loop back to Sorrento for full route
+            [40.6515, 14.5730],  // Nocelle
+            [40.6295, 14.4824],  // Positano
+            [40.6342, 14.6027]   // Amalfi (end)
         ];
 
-        // Add markers for each milestone along both routes
-        var milestones = [
+        // Add markers for each waypoint along both routes
+        var waypoints = [
             { name: "Sorrento Arrival", coords: [40.6263, 14.3758], description: "Explore Sorrento's historic center, lemon groves, and Marina Grande." },
             { name: "Schiazzano", coords: [40.5989, 14.3541], description: "Small village known for olive groves and mozzarella production." },
             { name: "Sant’Agata sui Due Golfi", coords: [40.6097, 14.3822], description: "Hilltop village with views over Naples and Salerno gulfs." },
@@ -55,10 +55,11 @@
             { name: "Amalfi Arrival", coords: [40.6342, 14.6027], description: "Historic town with Amalfi Cathedral and scenic views." },
             { name: "Positano", coords: [40.6295, 14.4824], description: "Iconic coastal village with vibrant streets and stunning views." },
             { name: "Bomerano (Start of Path of the Gods)", coords: [40.6342, 14.5450], description: "Starting point for the Path of the Gods." },
+            { name: "Viewpoint along Path of the Gods", coords: [40.6407, 14.5549], description: "Midway viewpoint with breathtaking coastal views." },
             { name: "Nocelle (End of Path of the Gods)", coords: [40.6515, 14.5730], description: "End of the Path of the Gods with breathtaking views." }
         ];
 
-        milestones.forEach(function(point) {
+        waypoints.forEach(function(point) {
             L.marker(point.coords).addTo(map)
                 .bindPopup(`<b>${point.name}</b><br>${point.description}`);
         });
@@ -66,7 +67,7 @@
         // Draw the Sorrento to Amalfi route in blue
         L.polyline(sorrentoToAmalfiRoute, { color: 'blue', weight: 3, opacity: 0.7 }).addTo(map);
 
-        // Draw the Path of the Gods route in red, connecting back to Sorrento
+        // Draw the Path of the Gods route in red, connecting to Amalfi
         L.polyline(pathOfTheGodsRoute, { color: 'red', weight: 3, opacity: 0.7 }).addTo(map);
     </script>
 </body>
