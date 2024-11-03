@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Amalfi Coast Hiking Routes</title>
+    <title>Amalfi Coast Hiking Itinerary</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
     <style>
@@ -39,32 +39,34 @@
             [40.6342, 14.5450],  // Bomerano (start)
             [40.6407, 14.5549],  // midpoint
             [40.6482, 14.5638],  // midpoint
-            [40.6515, 14.5730]   // Nocelle (end)
+            [40.6515, 14.5730],  // Nocelle (end)
+            [40.6295, 14.4824],  // Positano connection back to Sorrento
+            [40.6263, 14.3758]   // Loop back to Sorrento for full route
         ];
 
-        // Add markers for key points on the Sorrento to Amalfi route
-        var places = [
-            { name: "Sorrento", coords: [40.6263, 14.3758] },
-            { name: "Schiazzano", coords: [40.5989, 14.3541] },
-            { name: "Sant’Agata sui Due Golfi", coords: [40.6097, 14.3822] },
-            { name: "Colli di Fontanelle", coords: [40.6333, 14.4122] },
-            { name: "Monte Faito", coords: [40.6500, 14.5090] },
-            { name: "Agerola", coords: [40.6292, 14.5444] },
-            { name: "Amalfi", coords: [40.6342, 14.6027] }
+        // Add markers for each milestone along both routes
+        var milestones = [
+            { name: "Sorrento Arrival", coords: [40.6263, 14.3758], description: "Explore Sorrento's historic center, lemon groves, and Marina Grande." },
+            { name: "Schiazzano", coords: [40.5989, 14.3541], description: "Small village known for olive groves and mozzarella production." },
+            { name: "Sant’Agata sui Due Golfi", coords: [40.6097, 14.3822], description: "Hilltop village with views over Naples and Salerno gulfs." },
+            { name: "Colli di Fontanelle", coords: [40.6333, 14.4122], description: "Quiet hamlet with olive groves and views of Capri." },
+            { name: "Monte Faito", coords: [40.6500, 14.5090], description: "Forested mountain with beech and oak trees." },
+            { name: "Agerola", coords: [40.6292, 14.5444], description: "Known for dairy farms and cheese, close to Path of the Gods." },
+            { name: "Amalfi Arrival", coords: [40.6342, 14.6027], description: "Historic town with Amalfi Cathedral and scenic views." },
+            { name: "Positano", coords: [40.6295, 14.4824], description: "Iconic coastal village with vibrant streets and stunning views." },
+            { name: "Bomerano (Start of Path of the Gods)", coords: [40.6342, 14.5450], description: "Starting point for the Path of the Gods." },
+            { name: "Nocelle (End of Path of the Gods)", coords: [40.6515, 14.5730], description: "End of the Path of the Gods with breathtaking views." }
         ];
 
-        places.forEach(function(place) {
-            L.marker(place.coords).addTo(map).bindPopup(place.name);
+        milestones.forEach(function(point) {
+            L.marker(point.coords).addTo(map)
+                .bindPopup(`<b>${point.name}</b><br>${point.description}`);
         });
 
         // Draw the Sorrento to Amalfi route in blue
         L.polyline(sorrentoToAmalfiRoute, { color: 'blue', weight: 3, opacity: 0.7 }).addTo(map);
 
-        // Add markers for Path of the Gods start and end points
-        L.marker(pathOfTheGodsRoute[0]).addTo(map).bindPopup("Bomerano (Path of the Gods Start)");
-        L.marker(pathOfTheGodsRoute[pathOfTheGodsRoute.length - 1]).addTo(map).bindPopup("Nocelle (Path of the Gods End)");
-
-        // Draw the Path of the Gods route in red
+        // Draw the Path of the Gods route in red, connecting back to Sorrento
         L.polyline(pathOfTheGodsRoute, { color: 'red', weight: 3, opacity: 0.7 }).addTo(map);
     </script>
 </body>
