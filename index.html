@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Amalfi Coast Hiking Itinerary</title>
+    <title>Amalfi Coast Hiking Itinerary with Tuscany</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
     <style>
@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
         // Initialize the map
-        var map = L.map('map').setView([40.63, 14.5], 12);
+        var map = L.map('map').setView([41.5, 13.5], 6); // Adjusted view to include Tuscany and Amalfi Coast
 
         // Add a tile layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -56,7 +56,8 @@
             { name: "Positano", coords: [40.6295, 14.4824], description: "Iconic coastal village with vibrant streets and stunning views." },
             { name: "Bomerano (Start of Path of the Gods)", coords: [40.6342, 14.5450], description: "Starting point for the Path of the Gods." },
             { name: "Viewpoint along Path of the Gods", coords: [40.6407, 14.5549], description: "Midway viewpoint with breathtaking coastal views." },
-            { name: "Nocelle (End of Path of the Gods)", coords: [40.6515, 14.5730], description: "End of the Path of the Gods with breathtaking views." }
+            { name: "Nocelle (End of Path of the Gods)", coords: [40.6515, 14.5730], description: "End of the Path of the Gods with breathtaking views." },
+            { name: "Tuscany (Florence)", coords: [43.7696, 11.2558], description: "Central region of Italy known for beautiful landscapes and historical sites." }
         ];
 
         waypoints.forEach(function(point) {
